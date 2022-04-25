@@ -20,9 +20,3 @@ export const SubContainer = styled.div`
         justify-content: center;
     }
 `
-
-export const VolumeInput = styled.input`
-    &{
-        justify-self: flex-end;
-    }
-`

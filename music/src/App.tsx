@@ -24,7 +24,7 @@ export const App = () => {
         <AppContainer>
             <GlobalStyles />
             <Router />
-           <Player />
+            <Player />
         </AppContainer>
     )
 }
