@@ -1,15 +1,36 @@
-import React, { HTMLInputTypeAttribute, useState } from 'react'
+import React, { useState } from 'react'
 import { ProgressBody, PregressBar } from './styled'
+import Monster from '../../SimpleSongs/monster.mp3'
+import { useEffect } from 'react'
+
+interface IProgressBar {
+
+}
 
 export const ProgressBar = () => {
-    //const [currentProgress, setCurrentProgress] = useState<number>(0)
+    const [currentSong, setCurrentSong] = useState(new Audio(Monster))
+
+    currentSong.play()
+
     function handleChangeProgress(event:React.ChangeEvent<HTMLInputElement>){
         console.log(event.target.value)
+        console.log( currentSong.currentTime)
     }
 
     return(
         <ProgressBody>
-            <PregressBar type={'range'} min='0' max='100' onChange={handleChangeProgress}/>
+            <PregressBar type='range' min='0' max={13} value={currentSong.currentTime} onChange={handleChangeProgress}/>
         </ProgressBody>
     )
 }
+
+
+
+/*
+
+    Application store:
+    -currentPlayedSongUrl
+    -isSongPlayingNow
+
+
+*/
