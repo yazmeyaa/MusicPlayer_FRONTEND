@@ -3,10 +3,10 @@ import { MusicReducer, initialState as PlayerInitialState } from '../reducers/Mu
 
 export const store = configureStore({
     reducer: {
-        PlayerStore: MusicReducer
+        PlayerStore: MusicReducer,
     },
     preloadedState: {
-        PlayerStore: PlayerInitialState
+        PlayerStore: PlayerInitialState,
     },
     devTools: true
 })
