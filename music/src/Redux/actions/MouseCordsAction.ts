@@ -10,3 +10,4 @@ export type SetCoordinates = {
     }
 }
 
+export type MouseCoordinatesAction = SetCoordinates

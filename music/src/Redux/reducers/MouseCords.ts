@@ -1,4 +1,4 @@
-import { SetCoordinates as Actions, MouseActions } from '../actions/MouseCordsAction'
+import { MouseCoordinatesAction as Actions, MouseActions } from '../actions/MouseCordsAction'
 
 interface IState {
     xPos: number

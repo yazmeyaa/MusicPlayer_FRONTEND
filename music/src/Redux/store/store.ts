@@ -1,12 +1,13 @@
-import {configureStore} from '@reduxjs/toolkit'
-import { MusicReducer, initialState as PlayerInitialState } from '../reducers/MusicReducer'
+import { configureStore } from '@reduxjs/toolkit'
+import { RootReducer } from '../reducers'
+import { initialState as MusicState } from '../reducers/MusicReducer'
+import { initState as MouseCoordintaesState } from '../reducers/MouseCords'
 
 export const store = configureStore({
-    reducer: {
-        PlayerStore: MusicReducer,
-    },
+    reducer: RootReducer,
     preloadedState: {
-        PlayerStore: PlayerInitialState,
+        PlayerReducer: MusicState,
+        MouseCoordinates: MouseCoordintaesState
     },
     devTools: true
 })
