@@ -3,7 +3,8 @@ import {ButtonsCollection} from './ButtonsCollection/ButtonsCollection'
 import { MusicVolume } from './MusicVolume/MusicVolume'
 import { ProgressBar } from './ProgressBar/ProgressBar'
 import { useAppSelector } from '../customHooks/useTypedSelector'
-//import { useActions } from '../customHooks/useActions'
+import { useActions } from '../customHooks/useActions'
+import { useEffect } from 'react'
 
 
 export const Player = () => {    
@@ -11,7 +12,7 @@ export const Player = () => {
         return state.PlayerStore
     } )
 
-//    const {} = useActions()
+    const {ChangeCurrentSongTime} = useActions()
 
     
     return (

@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { useRef } from "react";
 
-export const ProgressBody = styled.div`
+export const ProgressBarContainer = styled.div`
     &{
         display: flex;
         justify-content: center;
@@ -10,23 +11,53 @@ export const ProgressBody = styled.div`
     }
 `
 
-export const PregressBar = styled.input`
+// ->
+
+
+
+export const PregressBarBody = styled.div`
     &{
-        -webkit-appearance: none;
-        width: 80%;
+        display: flex;
         box-sizing: border-box;
-    }
-    &::-webkit-slider-runnable-track{
-        background: yellow;
+        height: 20px;
+        width: 80%;
+        background-color: transparent;
         border: 1px solid black;
-        border-radius: 8px;
+        border-radius: 1rem;
+        overflow: hidden;
+        transition: .2s;
     }
-    &::-webkit-slider-thumb{
-        -webkit-appearance: none;
-        height: 1rem;
-        width: 1rem;
-        border-radius: 50%;
-        border: 1px solid black;
-        background: black;
+    &:hover{
+        box-shadow: 0px 0px 10px 5px #ffc8004f;
+    }
+`
+
+// ->
+
+interface ICurrentSongProgress{
+    currentSongProgress: number | undefined
+}
+
+export const CurrentProgressBar = styled.div<ICurrentSongProgress>`
+    &{
+        box-sizing: border-box;
+        height: 100%;
+        width: ${props => props.currentSongProgress ? `${props.currentSongProgress}%` : '0px' };
+        background-color: yellow;
+        border-right: 1px solid black;
+        transition: 0.2s;
+    }
+`
+
+// ->
+
+export const ProgressBarThumb = styled.div`
+    &{
+        height: 100%;
+        width: 10px;
+        border-radius: 1rem;
+        background-color: orange;
+        transform: translate(-50%);
+        cursor: pointer;
     }
 `

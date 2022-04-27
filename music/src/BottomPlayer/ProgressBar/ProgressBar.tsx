@@ -1,4 +1,5 @@
-import { ProgressBody, PregressBar } from './styled'
+import React, { useEffect, useRef, useState } from 'react'
+import { ProgressBarContainer, PregressBarBody, CurrentProgressBar, ProgressBarThumb } from './styled'
 
 interface IProgressBar {
     currentSongProgress: number,
@@ -7,9 +8,16 @@ interface IProgressBar {
 
 export const ProgressBar = ({currentSongProgress, songDuration}:IProgressBar) => {
 
+    function handleClickOnProgressBarTrack( event: React.MouseEvent<HTMLElement> ){
+       console.log(event)
+    }
+
     return(
-        <ProgressBody>
-            <PregressBar type='range' min={0} max={songDuration} value={currentSongProgress} />
-        </ProgressBody>
+        <ProgressBarContainer>
+            <PregressBarBody onClick={handleClickOnProgressBarTrack}>
+                <CurrentProgressBar currentSongProgress={currentSongProgress}/>
+                <ProgressBarThumb/>
+            </PregressBarBody>
+        </ProgressBarContainer>
     )
 }
