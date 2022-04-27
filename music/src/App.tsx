@@ -1,6 +1,8 @@
 import {Player} from './BottomPlayer/index'
 import {Router} from './Router'
 import styled, {createGlobalStyle} from 'styled-components'
+import {Provider} from 'react-redux'
+import {store as MusicPlayerStore} from './Redux/store/store'
 
 const AppContainer = styled.div`
     &{
@@ -24,7 +26,9 @@ export const App = () => {
         <AppContainer>
             <GlobalStyles />
             <Router />
-            <Player />
+            <Provider store={MusicPlayerStore}>
+                <Player />
+            </Provider>
         </AppContainer>
     )
 }
