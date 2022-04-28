@@ -1,4 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, {useEffect, useRef} from 'react'
+import { useActions } from '../../customHooks/useActions'
+import { useAppSelector } from '../../customHooks/useTypedSelector'
 import { ProgressBarContainer, PregressBarBody, CurrentProgressBar, ProgressBarThumb } from './styled'
 
 interface IProgressBar {
@@ -7,14 +9,37 @@ interface IProgressBar {
 }
 
 export const ProgressBar = ({currentSongProgress, songDuration}:IProgressBar) => {
+    const { ChangeIsMouseOnProgressBar, ChangeIsMouseDown, ChangeCurrentSongTime, SetMouseCoordinates } = useActions()
+    const {isMouseDown} = useAppSelector(state => state.MouseState)
+    const MouseDown = useRef(isMouseDown)
 
-    function handleClickOnProgressBarTrack( event: React.MouseEvent<HTMLElement> ){
-       console.log(event)
+    useEffect(()=>{
+        window.addEventListener('mouseup', ()=>{
+            if(MouseDown.current){
+                ChangeIsMouseDown()
+            }
+        }, false)
+
+        window.addEventListener('mousemove', (event: MouseEvent)=>{
+            if(MouseDown.current){
+                ChangeCurrentSongTime(event.pageX)
+            }
+        }, false)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+
+    useEffect(()=>{
+        MouseDown.current = isMouseDown
+    },[isMouseDown])
+    
+
+    function handleClickOnProgressBarTrack( event: React.MouseEvent<HTMLElement> ){     
+        ChangeIsMouseDown()
     }
 
     return(
         <ProgressBarContainer>
-            <PregressBarBody onClick={handleClickOnProgressBarTrack}>
+            <PregressBarBody onMouseDown={handleClickOnProgressBarTrack} onMouseEnter={()=>{ChangeIsMouseOnProgressBar(true)}} onMouseLeave={()=>{ChangeIsMouseOnProgressBar(false)}}  >
                 <CurrentProgressBar currentSongProgress={currentSongProgress}/>
                 <ProgressBarThumb/>
             </PregressBarBody>

@@ -1,8 +1,9 @@
 import {Player} from './BottomPlayer/index'
 import {Router} from './Router'
 import styled, {createGlobalStyle} from 'styled-components'
-import {Provider} from 'react-redux'
-import {store as MusicPlayerStore} from './Redux/store/store'
+import  { useEffect, useRef } from 'react'
+import { useActions } from './customHooks/useActions'
+import { useAppSelector } from './customHooks/useTypedSelector'
 
 const AppContainer = styled.div`
     &{
@@ -10,7 +11,7 @@ const AppContainer = styled.div`
         align-items: center;
         flex-direction: column;
         min-height: 100vh;
-    }
+    }   
 `
 
 const GlobalStyles = createGlobalStyle`
@@ -20,15 +21,13 @@ const GlobalStyles = createGlobalStyle`
     }
 `
 
-
 export const App = () => {
+
     return(
         <AppContainer>
             <GlobalStyles />
             <Router />
-            <Provider store={MusicPlayerStore}>
-                <Player />
-            </Provider>
+            <Player />
         </AppContainer>
     )
 }
