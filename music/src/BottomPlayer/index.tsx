@@ -9,7 +9,7 @@ import { useEffect } from 'react'
 
 export const Player = () => {    
     const {songCurrentTime, songDuration} = useAppSelector( (state) => {
-        return state.PlayerStore
+        return state.PlayerState
     } )
 
     const {ChangeCurrentSongTime} = useActions()

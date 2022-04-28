@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import {MusicReducer} from './MusicReducer'
+import {PlayerReducer} from './MusicReducer'
 import {MouseCords} from './MouseCords'
 
 export const RootReducer = combineReducers({
-    PlayerReducer: MusicReducer,
+    PlayerState: PlayerReducer,
     MouseCoordinates: MouseCords
 })

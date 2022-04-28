@@ -6,7 +6,7 @@ import { initState as MouseCoordintaesState } from '../reducers/MouseCords'
 export const store = configureStore({
     reducer: RootReducer,
     preloadedState: {
-        PlayerReducer: MusicState,
+        PlayerState: MusicState,
         MouseCoordinates: MouseCoordintaesState
     },
     devTools: true

@@ -1,20 +1,17 @@
 import { PlayerActions, PlayerActionTypes as Actions } from '../actions/PlayerActions'
-
-interface StateType{
-    currentPlayingSongURL: string | null
-    play: boolean
-    songCurrentTime: number
-    songDuration: number
-}
+import { StateType } from '../types/PlayerTypes'
 
 export const initialState: StateType = {
     currentPlayingSongURL: null,
     play: false,
     songCurrentTime: 0,
-    songDuration: 0
+    songDuration: 0,
+    songList: [],
+    loading: false,
+    error: null
 }
 
-export const MusicReducer = (state = initialState, action: Actions): StateType => {
+export const PlayerReducer = (state = initialState, action: Actions): StateType => {
     switch(action.type){
         case PlayerActions.ChangeCurrentSong: {
             return {...state, currentPlayingSongURL: action.payload}
@@ -27,6 +24,18 @@ export const MusicReducer = (state = initialState, action: Actions): StateType =
         }
         case PlayerActions.ChangeCurrentSongDuration: {
             return {...state, songDuration: action.payload}
+        }
+        case PlayerActions.FetchSongList: {
+            return {...state, loading: true}
+        }
+        case PlayerActions.FetchSongListError: {
+            return {...state, loading: false, error: action.payload}
+        }
+        case PlayerActions.FetchSongListSuccess: {
+            return {...state, loading: false, songList: action.payload}
+        }
+        case PlayerActions.ClearError: {
+            return {...state, error: null}
         }
         default: {
             return state
