@@ -1,8 +1,9 @@
 import {Player} from './BottomPlayer/index'
 import {Router} from './Router'
 import styled, {createGlobalStyle} from 'styled-components'
-import {Provider} from 'react-redux'
-import {store as MusicPlayerStore} from './Redux/store/store'
+import { useEffect } from 'react'
+import { useActions } from './customHooks/useActions'
+import { useAppSelector } from './customHooks/useTypedSelector'
 
 const AppContainer = styled.div`
     &{
@@ -20,15 +21,25 @@ const GlobalStyles = createGlobalStyle`
     }
 `
 
-
 export const App = () => {
+    const {SetCurrentCoordinates} = useActions()
+    const {xPos, yPos} = useAppSelector(s => s.MouseCoordinates)
+
+    useEffect(()=>{
+        window.addEventListener('mousemove', (event: MouseEvent)=>{
+            SetCurrentCoordinates({xPos: event.clientX, yPos: event.clientY})
+        }, false)
+    }, [])
+
+    useEffect(()=>{
+        console.log(xPos, yPos)
+    },[xPos, yPos])
+
     return(
         <AppContainer>
             <GlobalStyles />
             <Router />
-            <Provider store={MusicPlayerStore}>
                 <Player />
-            </Provider>
         </AppContainer>
     )
 }

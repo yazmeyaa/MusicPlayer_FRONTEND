@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useRef } from "react";
 
 export const ProgressBarContainer = styled.div`
     &{

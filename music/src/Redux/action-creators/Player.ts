@@ -34,7 +34,7 @@ export const FetchSongList = (URL: string) => {
         
         
         try {
-            const data = axios.post(URL)
+            axios.post(URL)
             .then((res: AxiosResponse<Array<RecievedData>> ) => {
                 if(res.data && res.data instanceof Array ){
                     dispatch({type: PlayerActions.FetchSongListSuccess, payload: res.data})
