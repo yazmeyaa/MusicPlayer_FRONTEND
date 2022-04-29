@@ -22,8 +22,7 @@ export const ProgressBar = ({currentSongProgress, songDuration}:IProgressBar) =>
 
         window.addEventListener('mousemove', (event: MouseEvent)=>{
             if(MouseDown.current){
-                SetMouseCoordinates(event.clientX, event.clientY)
-                ChangeCurrentSongTime(event.clientX)
+                ChangeCurrentSongTime(event.pageX)
             }
         }, false)
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -34,8 +33,7 @@ export const ProgressBar = ({currentSongProgress, songDuration}:IProgressBar) =>
     },[isMouseDown])
     
 
-    function handleClickOnProgressBarTrack( event: React.MouseEvent<HTMLElement> ){
-        ChangeCurrentSongTime(event.nativeEvent.offsetX)
+    function handleClickOnProgressBarTrack( event: React.MouseEvent<HTMLElement> ){     
         ChangeIsMouseDown()
     }
 
