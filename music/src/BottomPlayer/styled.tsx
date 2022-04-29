@@ -13,6 +13,7 @@ export const Container = styled.div`
         border-style: ridge;
         background-color: #56A0E0;
         justify-content: space-between;
+        user-select: none;
     }
 `
 

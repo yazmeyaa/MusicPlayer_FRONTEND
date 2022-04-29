@@ -41,7 +41,8 @@ export const CurrentProgressBar = styled.div<ICurrentSongProgress>`
     &{
         box-sizing: border-box;
         height: 100%;
-        width: ${props => props.currentSongProgress ? `${props.currentSongProgress}%` : '0px' };
+        width: ${props => props.currentSongProgress ? `${props.currentSongProgress}px` : '0px' };
+        max-width: 100%;
         background-color: yellow;
         border-right: 1px solid black;
         transition: 0.2s;

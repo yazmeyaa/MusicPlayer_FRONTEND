@@ -6,10 +6,9 @@ import { useAppSelector } from '../customHooks/useTypedSelector'
 
 
 export const Player = () => {    
-    const {songCurrentTime, songDuration} = useAppSelector( (state) => {
+    const {songDuration, songCurrentTime} = useAppSelector( (state) => {
         return state.PlayerState
     } )
-
     
     return (
         <Container>
