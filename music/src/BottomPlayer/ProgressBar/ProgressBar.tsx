@@ -23,6 +23,7 @@ export const ProgressBar = ({currentSongProgress, songDuration}:IProgressBar) =>
         window.addEventListener('mousemove', (event: MouseEvent)=>{
             if(MouseDown.current){
                 SetMouseCoordinates(event.clientX, event.clientY)
+                ChangeCurrentSongTime(event.clientX)
             }
         }, false)
         // eslint-disable-next-line react-hooks/exhaustive-deps
