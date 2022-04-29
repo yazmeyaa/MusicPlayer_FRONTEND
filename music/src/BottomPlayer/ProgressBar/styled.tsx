@@ -24,7 +24,6 @@ export const PregressBarBody = styled.div`
         border: 1px solid black;
         border-radius: 1rem;
         overflow: hidden;
-        transition: .2s;
     }
     &:hover{
         box-shadow: 0px 0px 10px 5px #ffc8004f;
@@ -45,7 +44,6 @@ export const CurrentProgressBar = styled.div<ICurrentSongProgress>`
         max-width: 100%;
         background-color: yellow;
         border-right: 1px solid black;
-        transition: 0.2s;
     }
 `
 
