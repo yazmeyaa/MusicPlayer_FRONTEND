@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import {PlayerReducer} from './MusicReducer'
-import {MouseCords} from './MouseCords'
+import {PlayerReducer} from './PlayerReducer'
+import {MouseStates} from './MouseStatesReducer'
+import { MouseCoordinatesReducer } from "./MouseCoordinates";
 
 export const RootReducer = combineReducers({
     PlayerState: PlayerReducer,
-    MouseCoordinates: MouseCords
+    MouseState: MouseStates,
+    MouseCoordinates: MouseCoordinatesReducer
 })
