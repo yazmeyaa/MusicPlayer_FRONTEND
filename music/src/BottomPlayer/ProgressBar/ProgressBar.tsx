@@ -1,4 +1,4 @@
-import React, { MutableRefObject, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useActions } from '../../customHooks/useActions'
 import { useAppSelector } from '../../customHooks/useTypedSelector'
 import { ProgressBarContainer, PregressBarBody, CurrentProgressBar, ProgressBarThumb } from './styled'
@@ -12,24 +12,26 @@ function getPercent(num1: number, num2: number): number {
     return num1 / num2 * 100
 }
 
+function getPosition(xMousePos: number, element: DOMRect){
+
+}
+
 export const ProgressBar = ({ currentSongProgress, songDuration }: IProgressBar) => {
     const progressRef = useRef<HTMLDivElement>(null)
-    const mouseCoords = useRef<{ x: number, y: number }>({ x: 0, y: 0 })
-    const isMouseDown = useRef(false)
-    const { ChangeIsMouseDown, ChangeCurrentSongTime } = useActions()
+    const isMouseDown = useRef<boolean>(false)
+
+    const { ChangeCurrentSongTime } = useActions()
 
     useEffect(() => {
         window.addEventListener('mousemove', (event: MouseEvent) => {
-            if (isMouseDown.current) {
-                mouseCoords.current.x = event.pageX
-                mouseCoords.current.y = event.pageY
-                console.log(mouseCoords.current)
+            if (isMouseDown.current && ( null !== progressRef.current ) ) {
+                getPosition(event.offsetX, progressRef.current.getBoundingClientRect())
             }
         }, false)
 
         window.addEventListener('mouseup', ()=>{
-            if(isMouseDown){
-                isMouseDown.current = !isMouseDown
+            if(isMouseDown.current){
+                isMouseDown.current = !isMouseDown.current
             }
         }, false)
 
@@ -43,15 +45,10 @@ export const ProgressBar = ({ currentSongProgress, songDuration }: IProgressBar)
         }
     }
 
-    useEffect(()=>{
-        console.log(isMouseDown.current)
-    }, [isMouseDown.current])
-
-
     return (
         <ProgressBarContainer>
             <PregressBarBody onMouseDown={handleMouseDownOnBar} ref={progressRef} >
-                <CurrentProgressBar currentSongProgress={currentSongProgress} />
+                <CurrentProgressBar currentSongProgress={currentSongProgress}/>
                 <ProgressBarThumb />
             </PregressBarBody>
         </ProgressBarContainer>

@@ -34,7 +34,7 @@ export const PregressBarBody = styled.div`
 // ->
 
 interface ICurrentSongProgress{
-    currentSongProgress: number | undefined
+    currentSongProgress: number
 }
 
 export const CurrentProgressBar = styled.div<ICurrentSongProgress>`
