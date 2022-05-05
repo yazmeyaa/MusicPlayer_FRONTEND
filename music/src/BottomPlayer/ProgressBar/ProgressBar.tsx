@@ -4,14 +4,14 @@ import { ProgressBarContainer, PregressBarBody, CurrentProgressBar, ProgressBarT
 
 
 function getPercent(num1: number, num2: number): number {
-    return ( num1 / num2 ) * 100
+    return (num1 / num2) * 100
 }
 
-function setPosition(xMousePos: number, element: DOMRect): number{
+function setPosition(xMousePos: number, element: DOMRect): number {
     const value = getPercent(xMousePos - element.left, element.right - element.left)
-    if(value > 100){
+    if (value > 100) {
         return 100
-    } else if (value < 0){
+    } else if (value < 0) {
         return 0
     }
     return getPercent(xMousePos - element.left, element.right - element.left)
@@ -31,20 +31,20 @@ export const ProgressBar = ({ currentSongProgress, songDuration }: IProgressBar)
     const { ChangeCurrentSongTime } = useActions()
 
 
-    function handleOnMouseMove(event: MouseEvent){
-        if(Date.now() - lastTime.current > 16.6666){
+    function handleOnMouseMove(event: MouseEvent) {
+        if (Date.now() - lastTime.current > 16.6666) {
             canRender.current = true
         }
 
-        if (isElementDraggable.current && ( null !== progressRef.current ) && canRender.current ) {
+        if (isElementDraggable.current && (null !== progressRef.current) && canRender.current) {
             ChangeCurrentSongTime(setPosition(event.pageX, progressRef.current.getBoundingClientRect()))
             lastTime.current = Date.now()
         }
     }
 
 
-    function handleMouseUp(){
-        if(isElementDraggable.current){
+    function handleMouseUp() {
+        if (isElementDraggable.current) {
             isElementDraggable.current = !isElementDraggable.current
         }
     }
@@ -54,14 +54,14 @@ export const ProgressBar = ({ currentSongProgress, songDuration }: IProgressBar)
         window.addEventListener('mousemove', handleOnMouseMove, false)
 
         window.addEventListener('mouseup', handleMouseUp, false)
-// eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
     function handleMouseDownOnBar(event: React.MouseEvent) {
         isElementDraggable.current = true
 
-        if ( (null !== progressRef.current) ) {
+        if ((null !== progressRef.current)) {
             ChangeCurrentSongTime(setPosition(event.pageX, progressRef.current.getBoundingClientRect()))
         }
     }
@@ -70,7 +70,7 @@ export const ProgressBar = ({ currentSongProgress, songDuration }: IProgressBar)
     return (
         <ProgressBarContainer>
             <PregressBarBody onMouseDown={handleMouseDownOnBar} ref={progressRef} >
-                <CurrentProgressBar style={{width: currentSongProgress.toPrecision(3) + '%'}} />
+                <CurrentProgressBar style={{ width: currentSongProgress.toPrecision(3) + '%' }} />
                 <ProgressBarThumb />
             </PregressBarBody>
         </ProgressBarContainer>

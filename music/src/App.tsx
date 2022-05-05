@@ -1,6 +1,6 @@
-import {Player} from './BottomPlayer/index'
-import {Router} from './Router'
-import styled, {createGlobalStyle} from 'styled-components'
+import { Player } from './BottomPlayer/index'
+import { Router } from './Router'
+import styled, { createGlobalStyle } from 'styled-components'
 
 const AppContainer = styled.div`
     &{
@@ -20,7 +20,7 @@ const GlobalStyles = createGlobalStyle`
 
 export const App = () => {
 
-    return(
+    return (
         <AppContainer>
             <GlobalStyles />
             <Router />

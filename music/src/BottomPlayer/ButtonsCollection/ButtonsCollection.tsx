@@ -3,14 +3,14 @@ import { useAppSelector } from '../../customHooks/useTypedSelector'
 import { SingleButton, ButtonsContainer, ButtonsBody } from './styled'
 
 export const ButtonsCollection = () => {
-    const {play} = useAppSelector(state => {return state.PlayerState})
-    const {ChangePlayStatus} = useActions()
+    const { play } = useAppSelector(state => { return state.PlayerState })
+    const { ChangePlayStatus } = useActions()
 
-    function handlePrev(){
+    function handlePrev() {
 
     }
 
-    function handleNext(){
+    function handleNext() {
 
     }
 
