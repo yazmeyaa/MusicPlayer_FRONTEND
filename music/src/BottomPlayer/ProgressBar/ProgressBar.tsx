@@ -54,7 +54,7 @@ export const ProgressBar = ({ currentSongProgress, songDuration }: IProgressBar)
         window.addEventListener('mousemove', handleOnMouseMove, false)
 
         window.addEventListener('mouseup', handleMouseUp, false)
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 

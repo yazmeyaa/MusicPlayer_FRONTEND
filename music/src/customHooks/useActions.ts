@@ -2,9 +2,8 @@ import { useDispatch } from "react-redux"
 import { bindActionCreators } from "redux"
 import * as PlayerActionCreators from '../Redux/action-creators/PlayerActions'
 import * as MouseStateActionCreators from '../Redux/action-creators/MouseStateActions'
-import * as MouseCoordinatesActionCreators from '../Redux/action-creators/MouseCoordinatesActions'
 
-const ActionCreators = {...PlayerActionCreators, ...MouseStateActionCreators, ...MouseCoordinatesActionCreators }
+const ActionCreators = {...PlayerActionCreators, ...MouseStateActionCreators }
 
 export const useActions = () => {
     const dispatch = useDispatch()

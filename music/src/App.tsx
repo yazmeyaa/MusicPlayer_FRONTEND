@@ -1,7 +1,6 @@
 import {Player} from './BottomPlayer/index'
 import {Router} from './Router'
 import styled, {createGlobalStyle} from 'styled-components'
-import { useEffect } from 'react'
 
 const AppContainer = styled.div`
     &{
