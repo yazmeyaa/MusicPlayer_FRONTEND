@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {useRef} from 'react'
 
 export const ProgressBarContainer = styled.div`
     &{
@@ -33,15 +32,12 @@ export const PregressBarBody = styled.div`
 
 // ->
 
-interface ICurrentSongProgress{
-    currentSongProgress: number
-}
 
-export const CurrentProgressBar = styled.div<ICurrentSongProgress>`
+export const CurrentProgressBar = styled.div`
     &{
         box-sizing: border-box;
         height: 100%;
-        width: ${props => props.currentSongProgress ? `${props.currentSongProgress}%` : '0%' };
+        width: 0;
         max-width: 100%;
         background-color: yellow;
         border-right: 1px solid black;
