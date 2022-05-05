@@ -8,6 +8,12 @@ function getPercent(num1: number, num2: number): number {
 }
 
 function setPosition(xMousePos: number, element: DOMRect): number{
+    const value = getPercent(xMousePos - element.left, element.right - element.left)
+    if(value > 100){
+        return 100
+    } else if (value < 0){
+        return 0
+    }
     return getPercent(xMousePos - element.left, element.right - element.left)
 }
 
