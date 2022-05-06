@@ -1,6 +1,10 @@
 import { useActions } from '../../customHooks/useActions'
 import { useAppSelector } from '../../customHooks/useTypedSelector'
-import { SingleButton, ButtonsContainer, ButtonsBody } from './styled'
+import { SingleButton, ButtonsContainer, ButtonsBody, ButtonIcons } from './styled'
+import pause_button from './icons/pause_button.svg'
+import play_button from './icons/play_button.svg'
+import prev_button from './icons/prev_button.svg'
+import next_button from './icons/next_button.svg'
 
 export const ButtonsCollection = () => {
     const { play } = useAppSelector(state => { return state.PlayerState })
@@ -17,9 +21,9 @@ export const ButtonsCollection = () => {
     return (
         <ButtonsContainer>
             <ButtonsBody>
-                <SingleButton onClick={handlePrev} >Prev</SingleButton>
-                <SingleButton onClick={ChangePlayStatus} >{play ? 'Pause' : 'Play'}</SingleButton>
-                <SingleButton onClick={handleNext} >Next</SingleButton>
+                <SingleButton onClick={handlePrev} > <ButtonIcons src={prev_button} /> </SingleButton>
+                <SingleButton onClick={ChangePlayStatus} >{play ? <ButtonIcons src={pause_button} /> : <ButtonIcons src={play_button} />}</SingleButton>
+                <SingleButton onClick={handleNext} ><ButtonIcons src={next_button} /></SingleButton>
             </ButtonsBody>
         </ButtonsContainer>
     )

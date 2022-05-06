@@ -11,9 +11,10 @@ export const Container = styled.div`
         padding-top: 1rem;
         border-top: 4px black;
         border-style: ridge;
-        background-color: #56A0E0;
         justify-content: space-between;
         user-select: none;
+        background: rgb(8,0,34);
+        background: linear-gradient(0deg, rgba(8,0,34,1) 0%, rgba(15,0,59,1) 100%);
     }
 `
 

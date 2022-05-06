@@ -12,7 +12,8 @@ export const ButtonsContainer = styled.div`
 
 export const ButtonsBody = styled.div`
     &{
-        border: 2px solid black;
+        border: 2px solid #240090;
+        background-color: #1c1c1c;
         display: flex;
         justify-content: center;
         gap: 1rem;
@@ -26,19 +27,29 @@ export const SingleButton = styled.button`
         box-sizing: border-box;
         justify-self: center;
         align-self: center;
-        background-color: #E056A0;
+        background-color: #240090;
         border: none;
         font-size: 24px;
-        border: 1px solid #8C3664;
+        font-weight: 300;
+        border: 1px solid #190061;
         transition: .2s;
         border-radius: .5rem;
         cursor: pointer;
-        color: rgb(232,232,332)
+        color: rgb(232,232,332);
+        padding: .5rem 1rem;
     }
     &:hover{
-        background-color: #EC95C4;
+        background-color: #3500D3;
         border: 1px solid transparent;
-        box-shadow: 0px 0px 4px 4px #EFABD0;
+        box-shadow: 0px 0px 4px 4px #3c00ee44;
         color: white;
+    }
+`
+
+export const ButtonIcons = styled.img`
+    &{
+        object-fit: cover;
+        width: 1rem;
+        height: auto;
     }
 `
