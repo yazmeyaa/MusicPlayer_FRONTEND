@@ -1,9 +1,20 @@
+import { useAppSelector } from '../../customHooks/useTypedSelector'
 import {LandingBody} from './styled'
 
-export const Landing = () => {
+
+
+export const Landing:React.FC = () => {
+    const {songList} = useAppSelector(state => state.PlayerState)
+
     return(
         <LandingBody>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sunt magni, recusandae deserunt accusamus facilis eos ipsum laborum pariatur eligendi corporis corrupti repudiandae, veritatis voluptas quae est libero explicabo rerum?
+
+            {songList && songList.map((item, index) => {
+                return(
+                    <div key={index}> {item.URL} </div>
+                )
+            })}
+
         </LandingBody>
     )
 }

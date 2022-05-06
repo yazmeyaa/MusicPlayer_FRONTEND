@@ -1,5 +1,10 @@
 export type RecievedData = {
-    URL: string
+    URL: string,
+    Author: string,
+    Name: string,
+    Duration: number,
+    Description?: string,
+    Lyrics: string
 }
 
 export interface StateType {
