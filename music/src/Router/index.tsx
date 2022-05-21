@@ -1,4 +1,4 @@
-import {  FC } from 'react'
+import { FC } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useAppSelector } from '../customHooks/useTypedSelector'
 import { AuthPage } from '../Pages/AuthPage'
@@ -7,7 +7,7 @@ import { Landing } from '../Pages/Landing/'
 
 
 export const Router = () => {
-    const JWT = 'fake JWT'
+    const { JWT } = useAppSelector(state => state.UserState)
     return (
         <Routes>
             <Route path='/auth' element={<AuthPage />} />
@@ -15,7 +15,7 @@ export const Router = () => {
                 <Route path='/' element={<Landing />} />
             </ProtectedRoutes>
 
-            <Route path='*' element={<h1>404 not found</h1>}/>
+            <Route path='*' element={<h1>404 not found</h1>} />
 
         </Routes>
     )
@@ -23,7 +23,7 @@ export const Router = () => {
 
 interface IProtectedRoutes {
     children: JSX.Element,
-    token: string  
+    token: string | null
 }
 
 const ProtectedRoutes: FC<IProtectedRoutes> = ({ token, children }) => {
