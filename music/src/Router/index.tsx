@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, ReactElement } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useAppSelector } from '../customHooks/useTypedSelector'
 import { AuthPage } from '../Pages/AuthPage'
@@ -11,9 +11,11 @@ export const Router = () => {
     return (
         <Routes>
             <Route path='/auth' element={<AuthPage />} />
-            <ProtectedRoutes token={JWT}>
-                <Route path='/' element={<Landing />} />
-            </ProtectedRoutes>
+            <Route path='/' element={
+                <ProtectedRoutes token={JWT}>
+                    <Landing />
+                </ProtectedRoutes>
+            } />
 
             <Route path='*' element={<h1>404 not found</h1>} />
 
@@ -22,7 +24,7 @@ export const Router = () => {
 }
 
 interface IProtectedRoutes {
-    children: JSX.Element,
+    children: ReactElement,
     token: string | null
 }
 
