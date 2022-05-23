@@ -13,7 +13,7 @@ export const AuthPage = () => {
     })
     //
 
-    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    const onSubmit: SubmitHandler<FormValues> = (data) => {
         alert(JSON.stringify(data))
         reset()
     }
