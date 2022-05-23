@@ -4,21 +4,9 @@ export const ButtonsContainer = styled.div`
     &{
         display: flex;
         gap: 1rem;
-        padding: .5rem;
-        justify-content: center;
-        flex-basis: 100%;
-    }
-`
-
-export const ButtonsBody = styled.div`
-    &{
-        border: 2px solid #240090;
-        background-color: #1c1c1c;
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        padding: .5rem;
-        border-radius: 1rem;
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, -10%);
     }
 `
 

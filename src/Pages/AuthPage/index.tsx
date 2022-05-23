@@ -1,4 +1,5 @@
 import { useForm, FieldErrors, SubmitHandler, FieldValues, SubmitErrorHandler } from 'react-hook-form'
+import { Container, CustomForm, CustomInput, CustomButton } from './styled'
 import axios from 'axios'
 
 interface FormValues {
@@ -13,7 +14,7 @@ export const AuthPage = () => {
     //
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        alert(data)
+        alert(JSON.stringify(data))
         reset()
     }
 
@@ -22,41 +23,44 @@ export const AuthPage = () => {
     }
 
     return (
-        <div>
-            <div>
-                <form onSubmit={handleSubmit(onSubmit, onError)} >
-                    <label >
-                        Username
-                        <input {...register('username', {
-                            required: 'Username is required',
+        <Container>
+            <CustomForm onSubmit={handleSubmit(onSubmit, onError)} >
+                Register
+                <label >
+                    Username
+                    <CustomInput {...register('username', {
+                        required: 'Username is required',
+                        minLength: {
+                            value: 3,
+                            message: 'Username cant be less then 3 symbols'
+                        },
+                        maxLength: {
+                            value: 36,
+                            message: 'Username cannot be described 36 characters'
+                        }
+                    })} />
+                    <br />
+                    {errors && errors.username?.message}
+                </label>
+                <label>
+                    Password
+                    <CustomInput {...register('password',
+                        {
+                            required: 'Password is required',
                             minLength: {
-                                value: 3,
-                                message: 'Username cant be less then 3 symbols'
+                                value: 8,
+                                message: 'Password cant be less then 8 symbols'
                             },
                             maxLength: {
-                                value: 36,
-                                message: 'Username cannot be described 36 characters'
+                                value: 64,
+                                message: 'Password cannot be described 36 characters'
                             }
                         })} />
-                    </label>
-                    <label>
-                        Password
-                        <input {...register('password',
-                            {
-                                required: 'Password is required',
-                                minLength: {
-                                    value: 8,
-                                    message: 'Password cant be less then 3 symbols'
-                                },
-                                maxLength: {
-                                    value: 64,
-                                    message: 'Password cannot be described 36 characters'
-                                }
-                            })} />
-                    </label>
-                    <button type='submit' disabled={!isValid} >register</button>
-                </form>
-            </div>
-        </div>
+                    <br />
+                    {errors && errors.password?.message}
+                </label>
+                <CustomButton type='submit' disabled={!isValid} >register</CustomButton>
+            </CustomForm>
+        </Container>
     )
 }

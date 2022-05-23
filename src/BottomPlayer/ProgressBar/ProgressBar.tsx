@@ -68,11 +68,9 @@ export const ProgressBar = ({ currentSongProgress, songDuration }: IProgressBar)
 
 
     return (
-        <ProgressBarContainer>
             <PregressBarBody onMouseDown={handleMouseDownOnBar} ref={progressRef} >
                 <CurrentProgressBar style={{ width: currentSongProgress.toPrecision(3) + '%' }} />
                 <ProgressBarThumb />
             </PregressBarBody>
-        </ProgressBarContainer>
     )
 }

@@ -26,6 +26,9 @@ export const PregressBarBody = styled.div`
         overflow: hidden;
         background-color: #0C0032;
         transition: .2s;
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, -10%);
     }
     &:hover{
         box-shadow: 0px 0px 10px 5px #16005c33;

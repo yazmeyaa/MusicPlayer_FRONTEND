@@ -7,6 +7,9 @@ export const VolumeInput = styled.input`
         appearance: none;
         background-color: transparent;
         box-sizing: border-box;
+        position: absolute;
+        left: 90%;
+        transform: translate(-80%);
     }
 
     &::-webkit-slider-runnable-track{
