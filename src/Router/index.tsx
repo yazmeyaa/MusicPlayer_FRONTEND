@@ -5,20 +5,16 @@ import { AuthPage } from '../Pages/AuthPage'
 
 import { Landing } from '../Pages/Landing/'
 
-
 export const Router = () => {
     const { JWT } = useAppSelector(state => state.UserState)
     return (
         <Routes>
-            <Route path='/auth' element={<AuthPage />} />
             <Route path='/' element={
-                <ProtectedRoutes token={JWT}>
-                    <Landing />
-                </ProtectedRoutes>
-            } />
-
-            <Route path='*' element={<h1>404 not found</h1>} />
-
+            <ProtectedRoutes token={JWT}>
+                <Landing />
+            </ProtectedRoutes>} />
+            <Route path='/login' element={<AuthPage />}/>
+            <Route path='*' element={<h1>404 not found</h1>}/>
         </Routes>
     )
 }
