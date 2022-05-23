@@ -10,6 +10,7 @@ export const AuthPage = () => {
     const { register, handleSubmit, formState: { errors, isValid }, reset } = useForm<FormValues>({
         mode: 'onBlur'
     })
+    //
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         alert(data)
