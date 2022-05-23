@@ -5,12 +5,20 @@ import styled, { createGlobalStyle } from 'styled-components'
 const AppContainer = styled.div`
     &{
         display: flex;
-        align-items: center;
         flex-direction: column;
         min-height: 100vh;
         color: white;
         background: black;
     }   
+`
+
+const OutletContainer = styled.div`
+    &{
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 `
 
 const GlobalStyles = createGlobalStyle`
@@ -25,7 +33,9 @@ export const App = () => {
     return (
         <AppContainer>
             <GlobalStyles />
-            <Router />
+            <OutletContainer>
+                <Router />
+            </OutletContainer>
             <Player />
         </AppContainer>
     )
