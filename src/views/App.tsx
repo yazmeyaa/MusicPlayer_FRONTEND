@@ -1,5 +1,5 @@
-import { Player } from './BottomPlayer/index'
-import { Router } from './Router'
+import { Player } from './components/BottomPlayer/index'
+import { Router } from './AppRouter'
 import styled, { createGlobalStyle } from 'styled-components'
 
 const AppContainer = styled.div`

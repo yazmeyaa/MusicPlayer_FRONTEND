@@ -1,6 +1,5 @@
-import { useForm, FieldErrors, SubmitHandler, FieldValues, SubmitErrorHandler } from 'react-hook-form'
+import { useForm, FieldErrors, SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
 import { Container, CustomForm, CustomInput, CustomButton } from './styled'
-import { useRef } from 'react'
 
 interface FormValues {
     username: string,
@@ -12,9 +11,6 @@ export const AuthPage = () => {
         mode: 'onBlur'
     })
 
-
-
-    console.log(process.env)
 
     const onSubmit: SubmitHandler<FormValues> = (data) => {
         reset()

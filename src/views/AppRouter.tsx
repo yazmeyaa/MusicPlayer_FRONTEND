@@ -1,12 +1,12 @@
 import { FC, ReactElement } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { useAppSelector } from '../customHooks/useTypedSelector'
-import { AuthPage } from '../Pages/AuthPage'
-
-import { Landing } from '../Pages/Landing/'
+import { useAppSelector } from './hooks/useTypedSelector'
+import { AuthPage } from './pages/authPage'
+import { Landing } from './pages/landing'
 
 export const Router = () => {
-    const { JWT } = useAppSelector(state => state.UserState)
+    const { JWT } = useAppSelector (state => state.UserState)
+    
     return (
         <Routes>
             <Route path='/' element={
