@@ -1,6 +1,6 @@
 import { useForm, FieldErrors, SubmitHandler, FieldValues, SubmitErrorHandler } from 'react-hook-form'
 import { Container, CustomForm, CustomInput, CustomButton } from './styled'
-import axios from 'axios'
+import { useRef } from 'react'
 
 interface FormValues {
     username: string,
@@ -11,10 +11,12 @@ export const AuthPage = () => {
     const { register, handleSubmit, formState: { errors, isValid }, reset } = useForm<FormValues>({
         mode: 'onBlur'
     })
-    //
+
+
+
+    console.log(process.env)
 
     const onSubmit: SubmitHandler<FormValues> = (data) => {
-        alert(JSON.stringify(data))
         reset()
     }
 
