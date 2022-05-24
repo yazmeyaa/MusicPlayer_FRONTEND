@@ -24,3 +24,5 @@ yarn-error.log*
 
 
 newrelic_agent.log
+
+.env.*
