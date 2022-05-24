@@ -1,5 +1,5 @@
-import { useActions } from '../../customHooks/useActions'
-import { useAppSelector } from '../../customHooks/useTypedSelector'
+import { useActions } from '../../../hooks/useActions'
+import { useAppSelector } from '../../../hooks/useTypedSelector'
 import { SingleButton, ButtonsContainer,  ButtonIcons } from './styled'
 import pause_button from './icons/pause_button.svg'
 import play_button from './icons/play_button.svg'

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
-import { useActions } from '../../customHooks/useActions'
-import { ProgressBarContainer, PregressBarBody, CurrentProgressBar, ProgressBarThumb } from './styled'
+import { useActions } from '../../../hooks/useActions'
+import { PregressBarBody, CurrentProgressBar, ProgressBarThumb } from './styled'
 
 
 function getPercent(num1: number, num2: number): number {
@@ -68,9 +68,9 @@ export const ProgressBar = ({ currentSongProgress, songDuration }: IProgressBar)
 
 
     return (
-            <PregressBarBody onMouseDown={handleMouseDownOnBar} ref={progressRef} >
-                <CurrentProgressBar style={{ width: currentSongProgress.toPrecision(3) + '%' }} />
-                <ProgressBarThumb />
-            </PregressBarBody>
+        <PregressBarBody onMouseDown={handleMouseDownOnBar} ref={progressRef} >
+            <CurrentProgressBar style={{ width: currentSongProgress.toPrecision(3) + '%' }} />
+            <ProgressBarThumb />
+        </PregressBarBody>
     )
 }
