@@ -1,4 +1,4 @@
-import { useAppSelector } from '../../hooks/useTypedSelector'
+import { useAppSelector } from '../../../hooks/useTypedSelector'
 import { LandingBody } from './styled'
 
 

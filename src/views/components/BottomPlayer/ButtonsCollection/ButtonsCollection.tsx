@@ -1,5 +1,5 @@
-import { useActions } from '../../../hooks/useActions'
-import { useAppSelector } from '../../../hooks/useTypedSelector'
+import { useActions } from 'hooks/useActions'
+import { useAppSelector } from 'hooks/useTypedSelector'
 import { SingleButton, ButtonsContainer,  ButtonIcons } from './styled'
 import pause_button from './icons/pause_button.svg'
 import play_button from './icons/play_button.svg'
@@ -9,6 +9,7 @@ import next_button from './icons/next_button.svg'
 export const ButtonsCollection = () => {
     const { play } = useAppSelector(state => { return state.PlayerState })
     const { ChangePlayStatus } = useActions()
+
 
     function handlePrev() {
 

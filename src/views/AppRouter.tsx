@@ -1,6 +1,6 @@
 import { FC, ReactElement } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { useAppSelector } from './hooks/useTypedSelector'
+import { useAppSelector } from '../hooks/useTypedSelector'
 import { AuthPage } from './pages/authPage'
 import { Landing } from './pages/landing'
 
