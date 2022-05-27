@@ -1,2 +1,1 @@
-export const useRequest = (
-) => {}
+export const useRequest = () => {};
