@@ -1,29 +1,34 @@
-import { FC, ReactElement } from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { FC } from 'react'
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { useAppSelector } from '../hooks/useTypedSelector'
 import { AuthPage } from './pages/authPage'
 import { Landing } from './pages/landing'
 
 export const Router = () => {
-    const { JWT } = useAppSelector (state => state.UserState)
-    
+    const { JWT } = useAppSelector(state => state.UserState)
+
     return (
         <Routes>
-            <Route path='/' element={
-            <ProtectedRoutes token={JWT}>
-                <Landing />
-            </ProtectedRoutes>} />
-            <Route path='/login' element={<AuthPage />}/>
-            <Route path='*' element={<h1>404 not found</h1>}/>
+            <Route element={<ProtectedRoutes token={JWT} />}>
+                <Route path='/' element={<Landing />} />
+            </Route>
+            <Route element={<CantSeeWithToken token={JWT} />}>
+                <Route path='/login' element={<AuthPage />} />
+            </Route>
+            <Route path='*' element={<h1>404 not found</h1>} />
         </Routes>
     )
 }
 
+const CantSeeWithToken: FC<{ token: string | null }> = ({ token }) => {
+    return token ? <Navigate to='/' replace /> : <Outlet />
+}
+
+
 interface IProtectedRoutes {
-    children: ReactElement,
     token: string | null
 }
 
-const ProtectedRoutes: FC<IProtectedRoutes> = ({ token, children }) => {
-    return token ? children : <Navigate to='/login' />
+const ProtectedRoutes: FC<IProtectedRoutes> = ({ token }) => {
+    return token ? <Outlet /> : <Navigate to='/login' replace />
 }

@@ -1,14 +1,15 @@
 import { useForm, FieldErrors, SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
-import { Container, CustomForm, CustomInput, CustomButton } from './styled'
+import { Container, CustomForm, CustomInput, ErrorText, CustomButton, CustomInputLabel, AuthFormTitle, InputTitleText } from './styled'
 
 interface FormValues {
     username: string,
-    password: string
+    password: string,
+    rememberMe: string
 }
 
 export const AuthPage = () => {
     const { register, handleSubmit, formState: { errors, isValid }, reset } = useForm<FormValues>({
-        mode: 'onBlur'
+        mode: 'onTouched'
     })
 
 
@@ -23,9 +24,9 @@ export const AuthPage = () => {
     return (
         <Container>
             <CustomForm onSubmit={handleSubmit(onSubmit, onError)} >
-                Register
-                <label >
-                    Username
+                <AuthFormTitle>Register</AuthFormTitle>
+                <CustomInputLabel column align >
+                    <InputTitleText>Username</InputTitleText>
                     <CustomInput {...register('username', {
                         required: 'Username is required',
                         minLength: {
@@ -36,12 +37,12 @@ export const AuthPage = () => {
                             value: 36,
                             message: 'Username cannot be described 36 characters'
                         }
-                    })} />
+                    })} autoComplete='off' />
                     <br />
-                    {errors && errors.username?.message}
-                </label>
-                <label>
-                    Password
+                    {errors && <ErrorText> {errors.username?.message} </ErrorText>}
+                </CustomInputLabel>
+                <CustomInputLabel column align >
+                    <InputTitleText>Password</InputTitleText>
                     <CustomInput {...register('password',
                         {
                             required: 'Password is required',
@@ -53,10 +54,16 @@ export const AuthPage = () => {
                                 value: 64,
                                 message: 'Password cannot be described 36 characters'
                             }
-                        })} />
+                        })} type='password' />
                     <br />
-                    {errors && errors.password?.message}
-                </label>
+                    {errors && <ErrorText> {errors.password?.message} </ErrorText>}
+                </CustomInputLabel>
+
+                <CustomInputLabel>
+                    <input type='checkbox' {...register('rememberMe', {})} />
+                    <InputTitleText>Remember me </InputTitleText>
+                </CustomInputLabel>
+
                 <CustomButton type='submit' disabled={!isValid} >register</CustomButton>
             </CustomForm>
         </Container>

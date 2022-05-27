@@ -1,6 +1,8 @@
 import { Player } from './components/BottomPlayer/index'
 import { Router } from './AppRouter'
 import styled, { createGlobalStyle } from 'styled-components'
+import { useAppSelector } from 'hooks/useTypedSelector'
+import Montserrat from 'assets/fonts/Montserrat-VariableFont_wght.ttf'
 
 const AppContainer = styled.div`
     &{
@@ -8,7 +10,7 @@ const AppContainer = styled.div`
         flex-direction: column;
         min-height: 100vh;
         color: white;
-        background: black;
+        background: #110E1F;
     }   
 `
 
@@ -26,9 +28,16 @@ const GlobalStyles = createGlobalStyle`
         margin: 0px;
         padding: 0px;
     }
+
+    @font-face {
+        font-family: 'Montserrat';
+        src: url(${Montserrat}) format('truetype') ;
+        
+    }
 `
 
 export const App = () => {
+    const { play } = useAppSelector(state => state.PlayerState)
 
     return (
         <AppContainer>
@@ -36,7 +45,7 @@ export const App = () => {
             <OutletContainer>
                 <Router />
             </OutletContainer>
-            <Player />
+            {play && <Player />}
         </AppContainer>
     )
 }
