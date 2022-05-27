@@ -21,7 +21,7 @@ interface IProgressBar {
   songDuration: number;
 }
 
-export const ProgressBar = ({ currentSongProgress, songDuration }: IProgressBar) => {
+export const ProgressBar = ({ currentSongProgress }: IProgressBar) => {
   const progressRef = useRef<HTMLDivElement>(null);
   const isElementDraggable = useRef<boolean>(false);
   const lastTime = useRef<number>(Date.now());
