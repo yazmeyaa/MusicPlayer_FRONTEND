@@ -1,6 +1,6 @@
 {
-  "name": "music",
-  "version": "0.1.0",
+  "name": "music_player",
+  "version": "1.0.0",
   "homepage": "https://yazmeyaa.github.io/Music_Player",
   "private": true,
   "dependencies": {
@@ -28,7 +28,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "eslint --ext \"**/*.{ts,tsx}\" --fix",
+    "lint": "eslint \"**/*.{ts,tsx}\" --fix",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",

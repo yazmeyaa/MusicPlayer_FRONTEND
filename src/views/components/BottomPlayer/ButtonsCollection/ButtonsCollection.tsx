@@ -10,11 +10,15 @@ export const ButtonsCollection = () => {
   const { play } = useAppSelector((state) => {
     return state.PlayerState;
   });
-  const { ChangePlayStatus } = useActions();
+  const { changePlayStatus } = useActions();
 
-  function handlePrev() {}
+  function handlePrev() {
+    // TODO: create future changing song function
+  }
 
-  function handleNext() {}
+  function handleNext() {
+    // TODO: create future changing song function
+  }
 
   return (
     <ButtonsContainer>
@@ -22,7 +26,7 @@ export const ButtonsCollection = () => {
         {' '}
         <ButtonIcons src={prevButton} />{' '}
       </SingleButton>
-      <SingleButton onClick={ChangePlayStatus}>
+      <SingleButton onClick={changePlayStatus}>
         {play ? <ButtonIcons src={pauseButton} /> : <ButtonIcons src={playButton} />}
       </SingleButton>
       <SingleButton onClick={handleNext}>
