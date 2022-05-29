@@ -3,13 +3,13 @@ import { Dispatch } from 'react';
 import { PlayerActionTypes, PlayerActions } from '../actions/PlayerActions';
 import { RecievedData } from '../types/PlayerTypes';
 
-export const ChangeCurrentSong = (URL: string) => {
+export const changeCurrentSong = (URL: string) => {
   return async (dispatch: Dispatch<PlayerActionTypes>) => {
     dispatch({ type: PlayerActions.ChangeCurrentSong, payload: URL });
   };
 };
 
-export const ChangeCurrentSongDuration = (duration: number) => {
+export const changeCurrentSongDuration = (duration: number) => {
   return async (dispatch: Dispatch<PlayerActionTypes>) => {
     dispatch({ type: PlayerActions.ChangeCurrentSongDuration, payload: duration });
   };
@@ -17,17 +17,17 @@ export const ChangeCurrentSongDuration = (duration: number) => {
 
 export const changeCurrentSongTime = (time: number) => {
   return async (dispatch: Dispatch<PlayerActionTypes>) => {
-    dispatch({ type: PlayerActions.changeCurrentSongTime, payload: time });
+    dispatch({ type: PlayerActions.ChangeCurrentSongTime, payload: time });
   };
 };
 
-export const ChangePlayStatus = () => {
+export const changePlayStatus = () => {
   return async (dispatch: Dispatch<PlayerActionTypes>) => {
     dispatch({ type: PlayerActions.ChangePlayerStatus });
   };
 };
 
-export const FetchSongList = (URL: string) => {
+export const fetchSongList = (URL: string) => {
   return async (dispatch: Dispatch<PlayerActionTypes>) => {
     dispatch({ type: PlayerActions.FetchSongList });
 
