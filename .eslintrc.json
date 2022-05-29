@@ -50,6 +50,9 @@
         "@typesctipt-eslint/ban-ts-comment": "off"
     },
     "settings": {
+        "react": {
+          "version": "detect"  
+        },
         "import/resolver": {
             "typescript": {},
             "node": {

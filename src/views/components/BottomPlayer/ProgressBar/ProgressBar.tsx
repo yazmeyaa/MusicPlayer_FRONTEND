@@ -26,7 +26,7 @@ export const ProgressBar = ({ currentSongProgress }: IProgressBar) => {
   const isElementDraggable = useRef<boolean>(false);
   const lastTime = useRef<number>(Date.now());
   const canRender = useRef<boolean>(true);
-  const { ChangeCurrentSongTime } = useActions();
+  const { changeCurrentSongTime } = useActions();
 
   function handleOnMouseMove(event: MouseEvent) {
     if (Date.now() - lastTime.current > 16.6666) {
@@ -34,7 +34,7 @@ export const ProgressBar = ({ currentSongProgress }: IProgressBar) => {
     }
 
     if (isElementDraggable.current && null !== progressRef.current && canRender.current) {
-      ChangeCurrentSongTime(setPosition(event.pageX, progressRef.current.getBoundingClientRect()));
+      changeCurrentSongTime(setPosition(event.pageX, progressRef.current.getBoundingClientRect()));
       lastTime.current = Date.now();
     }
   }
@@ -56,7 +56,7 @@ export const ProgressBar = ({ currentSongProgress }: IProgressBar) => {
     isElementDraggable.current = true;
 
     if (null !== progressRef.current) {
-      ChangeCurrentSongTime(setPosition(event.pageX, progressRef.current.getBoundingClientRect()));
+      changeCurrentSongTime(setPosition(event.pageX, progressRef.current.getBoundingClientRect()));
     }
   }
 

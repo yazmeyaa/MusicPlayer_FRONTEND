@@ -4,7 +4,7 @@ type PlayerActionsTypes = {
   ChangeCurrentSong: 'ChangeCurrentSong';
   ChangePlayerStatus: 'ChangePlayerStatus';
   ChangeCurrentSongDuration: 'ChangeCurrentSongDuration';
-  ChangeCurrentSongTime: 'ChangeCurrentSongTime';
+  changeCurrentSongTime: 'changeCurrentSongTime';
   FetchSongList: 'FetchSongList';
   FetchSongListError: 'FetchSongListError';
   FetchSongListSuccess: 'FetchSongListSuccess';
@@ -15,7 +15,7 @@ export const PlayerActions: PlayerActionsTypes = {
   ChangeCurrentSong: 'ChangeCurrentSong',
   ChangePlayerStatus: 'ChangePlayerStatus',
   ChangeCurrentSongDuration: 'ChangeCurrentSongDuration',
-  ChangeCurrentSongTime: 'ChangeCurrentSongTime',
+  changeCurrentSongTime: 'changeCurrentSongTime',
   FetchSongList: 'FetchSongList',
   FetchSongListError: 'FetchSongListError',
   FetchSongListSuccess: 'FetchSongListSuccess',
@@ -37,7 +37,7 @@ type ChangeCurrentSongDuration = {
 };
 
 type ChangeCurrentSongTime = {
-  type: 'ChangeCurrentSongTime';
+  type: 'changeCurrentSongTime';
   payload: number;
 };
 

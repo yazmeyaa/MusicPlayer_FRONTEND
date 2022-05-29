@@ -15,9 +15,9 @@ export const ChangeCurrentSongDuration = (duration: number) => {
   };
 };
 
-export const ChangeCurrentSongTime = (time: number) => {
+export const changeCurrentSongTime = (time: number) => {
   return async (dispatch: Dispatch<PlayerActionTypes>) => {
-    dispatch({ type: PlayerActions.ChangeCurrentSongTime, payload: time });
+    dispatch({ type: PlayerActions.changeCurrentSongTime, payload: time });
   };
 };
 

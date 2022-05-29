@@ -19,7 +19,7 @@ export const PlayerReducer = (state = initialState, action: Actions): StateType 
     case PlayerActions.ChangePlayerStatus: {
       return { ...state, play: !state.play };
     }
-    case PlayerActions.ChangeCurrentSongTime: {
+    case PlayerActions.changeCurrentSongTime: {
       return { ...state, songCurrentTime: action.payload };
     }
     case PlayerActions.ChangeCurrentSongDuration: {
