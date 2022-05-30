@@ -1,15 +1,11 @@
 {
   "files": {
-    "main.js": "/Music_Player/static/js/main.1a6c566d.js",
+    "main.js": "/Music_Player/static/js/main.8de8f53e.js",
     "static/media/Montserrat-VariableFont_wght.ttf": "/Music_Player/static/media/Montserrat-VariableFont_wght.3068cdb43142f5625baf.ttf",
     "index.html": "/Music_Player/index.html",
-    "static/media/prev_button.svg": "/Music_Player/static/media/prev_button.e6ba18450d2fe1ee301bfbbfd8ae649b.svg",
-    "static/media/pause_button.svg": "/Music_Player/static/media/pause_button.823376868d810ee566e7976e97b43e93.svg",
-    "static/media/next_button.svg": "/Music_Player/static/media/next_button.c06e934e808dfb5afddcfd8e7b8a78ae.svg",
-    "static/media/play_button.svg": "/Music_Player/static/media/play_button.1f74339d2e2d1bd76b75827bdb9d91cf.svg",
-    "main.1a6c566d.js.map": "/Music_Player/static/js/main.1a6c566d.js.map"
+    "main.8de8f53e.js.map": "/Music_Player/static/js/main.8de8f53e.js.map"
   },
   "entrypoints": [
-    "static/js/main.1a6c566d.js"
+    "static/js/main.8de8f53e.js"
   ]
 }
