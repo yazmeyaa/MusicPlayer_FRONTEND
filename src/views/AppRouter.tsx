@@ -15,12 +15,13 @@ export const Router = () => {
       <Route element={<CantSeeWithToken token={JWT} />}>
         <Route path="/login" element={<AuthPage />} />
       </Route>
-      <Route path="*" element={<h1>404 not found</h1>} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 };
 
 const CantSeeWithToken: FC<{ token: string | null }> = ({ token }) => {
+  // TODO: Make separate component from this with useNavigate hook;
   return token ? <Navigate to="/" replace /> : <Outlet />;
 };
 
