@@ -1,14 +1,29 @@
 import styled from 'styled-components';
 
+export const PageWrapper = styled.section`
+  & {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #110e1f;
+  }
+`;
+
 export const Container = styled.div`
   & {
-    padding: 1rem 2rem;
+    width: fit-content;
+    height: fit-content;
+    padding: 2rem 3rem;
     background-color: #1b1730;
+    border-radius: 12px;
   }
 `;
 
 export const AuthFormTitle = styled.span`
   & {
+    color: white;
     font-family: 'Montserrat';
     font-size: 1.5rem;
   }
@@ -42,6 +57,8 @@ export const CustomInputLabel = styled.label<ICustomInputLabel>`
 
 export const InputTitleText = styled.span`
   & {
+    color: white;
+    font-weight: 500;
     font-family: 'Montserrat';
     user-select: none;
   }
@@ -91,5 +108,6 @@ export const CustomButton = styled.button`
   }
   &:not(:disabled):hover {
     background-color: #9052ad;
+    cursor: pointer;
   }
 `;
