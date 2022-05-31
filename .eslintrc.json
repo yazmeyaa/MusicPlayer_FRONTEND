@@ -42,7 +42,7 @@
         "react-hooks/exhaustive-deps": "warn",
         "no-duplicate-imports": 1,
         "linebreak-style": [
-            "error",
+            "warning",
             "windows"
         ],
         "react/react-in-jsx-scope": "off",
