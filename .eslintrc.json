@@ -43,7 +43,7 @@
         "no-duplicate-imports": 1,
         "linebreak-style": [
             "warn",
-            "windows"
+            "unix"
         ],
         "react/react-in-jsx-scope": "off",
         "require-jsdoc": "off",
