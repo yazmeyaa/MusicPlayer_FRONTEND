@@ -33,6 +33,7 @@ export const CustomForm = styled.form`
   & {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: 1rem;
   }
@@ -61,6 +62,7 @@ export const InputTitleText = styled.span`
     font-weight: 500;
     font-family: 'Montserrat';
     user-select: none;
+    align-self: center;
   }
 `;
 
@@ -74,6 +76,7 @@ export const CustomInput = styled.input`
     color: white;
     font-size: 1.2rem;
     font-weight: bold;
+    align-self: center;
     transition: 0.2s;
   }
   &:focus {

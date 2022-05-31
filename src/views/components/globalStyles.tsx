@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import Montserrat from 'assets/fonts/Montserrat-VariableFont_wght.ttf';
+import Montserrat from '../../assets/fonts/Montserrat-VariableFont_wght.ttf';
 
 export const GlobalStyles = createGlobalStyle`
     body{
