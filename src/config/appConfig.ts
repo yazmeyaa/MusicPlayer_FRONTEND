@@ -1,0 +1,10 @@
+const { REACT_APP_BASE_URL: baseUrl, REACT_APP_PORT: port } = process.env;
+
+const getValueByName = (value: string | undefined, defaultValue = '') => {
+  return value || defaultValue;
+};
+
+export const appConfig = {
+  baseUrl: getValueByName(baseUrl, 'http://localhost: 8080'),
+  port: getValueByName(port),
+};

@@ -10,7 +10,7 @@ module.exports = {
         },
         compress: true,
 
-        port: 3001,
+        port: 8080,
     },
     module: {
         rules: [
@@ -40,7 +40,13 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js']
+        alias: {
+            'hooks': path.resolve(__dirname, 'src/hooks'),
+            'components': path.resolve(__dirname, 'src/views/components'),
+            '@types': path.resolve(__dirname, 'src/@types'),
+            'assets': path.resolve(__dirname, 'src/assets')
+        },
+        extensions: ['.tsx', '.ts', '.js'],
     },
     plugins: [
         new HtmlWebpackPlugin({
