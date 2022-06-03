@@ -10,6 +10,8 @@ import {
   InputTitleText,
   PageWrapper,
 } from './styled';
+import { useRequest } from 'hooks/useRequest';
+import { appConfig } from 'config/appConfig';
 
 interface FormValues {
   username: string;
@@ -18,6 +20,7 @@ interface FormValues {
 }
 
 export const AuthPage = () => {
+  const { loading, request } = useRequest();
   const {
     register,
     handleSubmit,
@@ -28,6 +31,14 @@ export const AuthPage = () => {
   });
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
+    request({
+      URL: `${appConfig.backendUrl}/api/auth`,
+      method: 'POST',
+      data: {
+        username: data.username,
+        password: data.password,
+      },
+    });
     reset();
   };
 
@@ -84,7 +95,7 @@ export const AuthPage = () => {
             <InputTitleText>Remember me </InputTitleText>
           </CustomInputLabel>
 
-          <CustomButton type="submit" disabled={!isValid}>
+          <CustomButton type="submit" disabled={!isValid || loading}>
             register
           </CustomButton>
         </CustomForm>

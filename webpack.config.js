@@ -4,12 +4,13 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
     entry: "./src/index.tsx",
     //webpack-dev-server settings
+    target: 'web',
     devServer: {
         static: {
-          directory: path.join(__dirname, "public")
+            directory: path.join(__dirname, "public")
         },
         compress: true,
-
+        open: true,
         port: 8080,
     },
     module: {
@@ -24,14 +25,14 @@ module.exports = {
                 }
             },
             {
-                test: /\.tsx?$/,
+                test: /\.(ts|tsx)?$/,
                 use: 'ts-loader',
                 exclude: /node_modules/,
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
-                exclude: /fonts/,
-                use: ['file-loader?name=[name].[ext]']
+                exclude: /node_modules/,
+                use: ['file-loader?name=[name].[ext]'] // ?name=[name].[ext] is only necessary to preserve the original file name
             },
             {
                 test: /\.(ttf|eot|woff|svg|woff2)$/,
@@ -41,12 +42,13 @@ module.exports = {
     },
     resolve: {
         alias: {
-            'hooks': path.resolve(__dirname, 'src/hooks'),
-            'components': path.resolve(__dirname, 'src/views/components'),
-            '@types': path.resolve(__dirname, 'src/@types'),
-            'assets': path.resolve(__dirname, 'src/assets')
+            hooks: path.resolve(__dirname, 'src/hooks'),
+            config: path.resolve(__dirname, 'src/config'),
+            assets: path.resolve(__dirname, 'src/assets'),
+            views: path.resolve(__dirname, 'src/views')
         },
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        modules: [path.resolve(__dirname, 'src'), 'node_modules']
     },
     plugins: [
         new HtmlWebpackPlugin({

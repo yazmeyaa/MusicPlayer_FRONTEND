@@ -23,5 +23,5 @@ export const useRequest = () => {
     return response;
   }, []);
 
-  return [loading, request];
+  return { loading, request };
 };

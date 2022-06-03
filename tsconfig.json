@@ -9,7 +9,7 @@
     "jsx": "react-jsx",
     "paths": {
       "@hooks/*" : ["/src/hooks/*"],
-      "@components/*": ["/src/views/components/baseLayout"]
+      "@components/*": ["/src/views/components/*"]
     },
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
