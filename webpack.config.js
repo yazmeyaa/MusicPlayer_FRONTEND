@@ -1,7 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require('webpack')
-const dotenv = require('dotenv').config({path: __dirname + '/.env'})
+const dotenv = require('dotenv').config({ path: __dirname + '/.env'})
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
 module.exports = {
@@ -12,6 +12,7 @@ module.exports = {
         static: {
             directory: path.join(__dirname, "public")
         },
+        historyApiFallback: true,
         compress: true,
         open: true,
         port: 8080,
@@ -35,7 +36,7 @@ module.exports = {
             {
                 test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
                 exclude: /node_modules/,
-                use: ['file-loader?name=[name].[ext]'] // ?name=[name].[ext] is only necessary to preserve the original file name
+                use: ['file-loader']
             },
             {
                 test: /\.(ttf|eot|woff|svg|woff2)$/,
@@ -55,7 +56,8 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, '/public', 'index.html')
+            template: path.join(__dirname, '/public', 'index.html'),
+            favicon: path.join(__dirname, '/public', 'favicon.ico')
         }),
         new webpack.DefinePlugin({
             'process.env': JSON.stringify(dotenv.parsed),
