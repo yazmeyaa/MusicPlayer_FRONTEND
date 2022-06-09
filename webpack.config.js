@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const  webpack = require("webpack");
 
 module.exports = {
     entry: "./src/index.tsx",
@@ -51,8 +52,14 @@ module.exports = {
         modules: [path.resolve(__dirname, 'src'), 'node_modules']
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            process: 'process/browser'
+        }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, '/public', 'index.html')
+        }),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('development')
         })
     ],
     output: {
