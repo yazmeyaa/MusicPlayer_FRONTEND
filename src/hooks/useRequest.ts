@@ -9,19 +9,19 @@ interface IRequestArgs {
 
 export const useRequest = () => {
   const [loading, setLoading] = useState<boolean>(false);
-
+  const [error, setError] = useState();
   const request = useCallback(async ({ URL, method, data }: IRequestArgs) => {
     setLoading(true);
     const response = await axios({
       url: URL,
       method: method,
       data: data,
-    }).then((data) => {
-      return data;
+    }).catch((error) => {
+      setError(error);
     });
     setLoading(false);
     return response;
   }, []);
 
-  return { loading, request };
+  return { request, loading, error };
 };

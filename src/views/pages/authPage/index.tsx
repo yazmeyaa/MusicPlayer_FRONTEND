@@ -12,6 +12,7 @@ import {
 } from './styled';
 import { useRequest } from 'hooks/useRequest';
 import { appConfig } from 'config/appConfig';
+import { useActions } from 'hooks/useActions';
 
 interface FormValues {
   username: string;
@@ -20,7 +21,7 @@ interface FormValues {
 }
 
 export const AuthPage = () => {
-  const { loading, request } = useRequest();
+  const { loading, request, error: requestError } = useRequest();
   const {
     register,
     handleSubmit,
@@ -29,6 +30,7 @@ export const AuthPage = () => {
   } = useForm<FormValues>({
     mode: 'onTouched',
   });
+  const { setJWT } = useActions();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     request({
@@ -38,6 +40,10 @@ export const AuthPage = () => {
         username: data.username,
         password: data.password,
       },
+    }).then((response) => {
+      if (response && response.status === 200) {
+        setJWT(response.data);
+      }
     });
     reset();
   };
@@ -68,7 +74,7 @@ export const AuthPage = () => {
               autoComplete="off"
             />
             <br />
-            {errors && <ErrorText> {errors.username?.message} </ErrorText>}
+            {(errors || requestError) && <ErrorText> {errors.username?.message} </ErrorText>}
           </CustomInputLabel>
           <CustomInputLabel column align>
             <InputTitleText>Password</InputTitleText>
@@ -87,7 +93,7 @@ export const AuthPage = () => {
               type="password"
             />
             <br />
-            {errors && <ErrorText> {errors.password?.message} </ErrorText>}
+            {(errors || requestError) && <ErrorText> {errors.password?.message} </ErrorText>}
           </CustomInputLabel>
 
           <CustomInputLabel>

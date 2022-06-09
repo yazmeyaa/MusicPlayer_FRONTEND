@@ -1,7 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require('webpack')
-const dotenv = require('dotenv').config({ path: __dirname + '/.env'})
+const dotenv = require('dotenv').config({ path: __dirname + '/.env' })
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
 module.exports = {
@@ -41,6 +41,17 @@ module.exports = {
             {
                 test: /\.(ttf|eot|woff|svg|woff2)$/,
                 loader: "file-loader"
+            },
+            {
+                test: /\.svg$/,
+                use: [
+                    {
+                        loader: 'svg-url-loader',
+                        options: {
+                            limit: 10000,
+                        },
+                    },
+                ],
             }
         ],
     },
@@ -55,9 +66,14 @@ module.exports = {
         modules: [path.resolve(__dirname, 'src'), 'node_modules']
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            process: 'process/browser'
+        }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, '/public', 'index.html'),
-            favicon: path.join(__dirname, '/public', 'favicon.ico')
+            filename: path.join(__dirname, '/public/index.html'),
+            favicon: path.join(__dirname, '/public/favicon.ico'),
+            manifest: path.join(__dirname, '/public/manifest.json'),
         }),
         new webpack.DefinePlugin({
             'process.env': JSON.stringify(dotenv.parsed),
