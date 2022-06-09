@@ -1,6 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const  webpack = require("webpack");
+const webpack = require('webpack')
+const dotenv = require('dotenv').config({path: __dirname + '/.env'})
+const isDevelopment = process.env.NODE_ENV !== 'production'
 
 module.exports = {
     entry: "./src/index.tsx",
@@ -59,9 +61,10 @@ module.exports = {
             template: path.join(__dirname, '/public', 'index.html')
         }),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('development')
+            'process.env': JSON.stringify(dotenv.parsed),
+            'process.env.NODE_ENV': JSON.stringify(isDevelopment ? 'development' : 'production')
         })
-    ],
+    ].filter(Boolean),
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'build'),
